@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SignUpButtonStyle" parent="Widget.Material3.Button.OutlinedButton.Icon">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="iconPadding">16dp</item>
+        <item name="strokeColor">@color/black</item>
+        <item name="strokeWidth">0.25dp</item>
+        <item name="iconGravity">textStart</item>
+    </style>
+
+    <style name="MainButton" parent="Widget.Material3.Button.IconButton.Filled">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">60dp</item>
+    </style>
+
+    <style name="BoldHintTextAppearance" parent="TextAppearance.Design.Hint">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+        <!-- You can also customize other text properties here if needed -->
+        <!-- <item name="android:textSize">14sp</item> -->
+    </style>
+</resources>
