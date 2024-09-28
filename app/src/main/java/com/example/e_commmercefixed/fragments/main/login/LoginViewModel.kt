@@ -68,7 +68,7 @@ class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
     private fun handleLoginResult(result: LoginResult) {
         _uiState.update { currentState ->
             when (result) {
-                is LoginResult.Success -> currentState.copy(emailError = "", passwordError = "")
+                is LoginResult.Success -> currentState.copy(emailError = "", passwordError = "", isLoginSuccess = true)
                 is LoginResult.EmailError -> currentState.copy(emailError = result.message, passwordError = "")
                 is LoginResult.PasswordError -> currentState.copy(emailError = "", passwordError = result.message)
                 is LoginResult.UnknownError -> currentState.copy(emailError = result.message, passwordError = result.message)
