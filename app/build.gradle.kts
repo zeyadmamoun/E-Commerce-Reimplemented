@@ -64,6 +64,7 @@ dependencies {
     implementation(libs.koin.android)
     //dataStore preferences
     implementation(libs.data.store)
+    implementation(libs.androidx.datastore.core.android)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

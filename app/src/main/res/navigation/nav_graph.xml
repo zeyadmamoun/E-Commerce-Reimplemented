@@ -33,7 +33,7 @@
 
     <fragment
         android:id="@+id/bottomNavigationFragment"
-        android:name="com.example.e_commmercefixed.fragments.main.BottomNavigationFragment"
+        android:name="com.example.e_commmercefixed.fragments.main.bottomNavigation.BottomNavigationFragment"
         android:label="fragment_bottom_navigation"
         tools:layout="@layout/fragment_bottom_navigation" />
     <fragment

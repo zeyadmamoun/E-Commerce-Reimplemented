@@ -1,4 +1,4 @@
-package com.example.e_commmercefixed.fragments.main
+package com.example.e_commmercefixed.fragments.main.bottomNavigation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,12 +12,14 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.e_commmercefixed.R
 import com.example.e_commmercefixed.databinding.FragmentBottomNavigationBinding
+import org.koin.android.ext.android.inject
 
 class BottomNavigationFragment : Fragment() {
 
     private var _binding: FragmentBottomNavigationBinding? = null
     private val binding get() = _binding!!
 
+    private val viewModel: BottomNavigationViewModel by inject()
     private lateinit var navController: NavController
 
     override fun onCreateView(
