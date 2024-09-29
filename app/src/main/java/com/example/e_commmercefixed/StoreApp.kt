@@ -1,6 +1,10 @@
 package com.example.e_commmercefixed
 
 import android.app.Application
+import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import com.example.e_commmercefixed.fragments.main.login.LoginViewModel
 import com.example.e_commmercefixed.repositories.authentication.AuthRepository
 import com.example.e_commmercefixed.repositories.authentication.AuthRepositoryImpl
@@ -12,6 +16,11 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
+
+private const val TOKEN_PREFERENCE_NAME = "token_preferences"
+private val Context.tokenDataStore: DataStore<Preferences> by preferencesDataStore(
+    name = TOKEN_PREFERENCE_NAME
+)
 
 class StoreApp : Application() {
     override fun onCreate() {
@@ -27,14 +36,14 @@ class StoreApp : Application() {
             }
 
             single<AuthRepository>{
-                AuthRepositoryImpl(get())
+                AuthRepositoryImpl(get(),tokenDataStore)
             }
 
             viewModel { LoginViewModel(get()) }
         }
 
         startKoin{
-            androidContext( this@StoreApp)
+            androidContext(this@StoreApp)
             modules(appModule)
         }
 

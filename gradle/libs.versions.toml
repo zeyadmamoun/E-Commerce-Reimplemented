@@ -13,6 +13,7 @@ nav_version = "2.7.7"
 ktor = "2.3.12"
 serialization = "1.5.1"
 koin = "3.5.6"
+data_store = "1.1.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -32,6 +33,7 @@ ktor-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation",
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization" }
 ktor-serialization-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
+data_store = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "data_store" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

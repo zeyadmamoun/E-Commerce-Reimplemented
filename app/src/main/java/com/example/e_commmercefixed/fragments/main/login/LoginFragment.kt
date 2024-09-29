@@ -42,10 +42,13 @@ class LoginFragment : Fragment() {
                 binding.emailTextBox.error = it.emailError
                 binding.passwordTextBox.error = it.passwordError
                 binding.loginBtn.isEnabled = !it.isLoading
-                if (it.isLoginSuccess){
-                    val action = LoginFragmentDirections.actionLoginFragmentToBottomNavigationFragment()
-                    this@LoginFragment.findNavController().navigate(action)
-                }
+            }
+        }
+
+        lifecycleScope.launch(Dispatchers.Main) {
+            viewModel.navigationEvent.collect {
+                val action = LoginFragmentDirections.actionLoginFragmentToBottomNavigationFragment()
+                findNavController().navigate(action)
             }
         }
 

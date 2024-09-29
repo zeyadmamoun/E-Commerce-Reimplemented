@@ -62,6 +62,8 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     //koin
     implementation(libs.koin.android)
+    //dataStore preferences
+    implementation(libs.data.store)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
