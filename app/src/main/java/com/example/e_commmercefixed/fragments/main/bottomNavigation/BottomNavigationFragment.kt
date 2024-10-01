@@ -42,5 +42,6 @@ class BottomNavigationFragment : Fragment() {
             this.childFragmentManager.findFragmentById(R.id.nav_host_fragment_second) as NavHostFragment
         navController = navigationHostFragment.navController
         binding.bottomNav.setupWithNavController(navController)
+        viewModel.getUserData()
     }
 }

@@ -71,7 +71,17 @@ class AuthRepositoryImpl(
     }
 
     override suspend fun signup(user: User): Response {
-        TODO("Not yet implemented")
+        return try{
+            val httpResponse = client.post("http://192.168.1.18:8080/register"){
+                contentType(ContentType.Application.Json)
+                setBody(user)
+            }
+            val response: Response = httpResponse.body()
+            response
+        }catch (e: Exception){
+            Log.d("AuthRepo", e.message.toString())
+            Response(false, e.message.toString())
+        }
     }
 
     override suspend fun logout() {

@@ -36,13 +36,6 @@ class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
     private var _navigationEvent = MutableSharedFlow<Unit>(replay = 0)
     val navigationEvent: SharedFlow<Unit> = _navigationEvent
 
-//    init {
-//        viewModelScope.launch {
-//            val token = repository.token.first()
-//            Log.i("LoginViewModel", token.toString())
-//        }
-//    }
-
     fun login(email: String, password: String) {
         viewModelScope.launch(Dispatchers.IO) {
             setLoading(true)

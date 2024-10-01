@@ -38,8 +38,12 @@
         tools:layout="@layout/fragment_bottom_navigation" />
     <fragment
         android:id="@+id/signupFragment"
-        android:name="com.example.e_commmercefixed.fragments.main.SignupFragment"
+        android:name="com.example.e_commmercefixed.fragments.main.signup.SignupFragment"
         android:label="fragment_signup"
-        tools:layout="@layout/fragment_signup" />
+        tools:layout="@layout/fragment_signup" >
+        <action
+            android:id="@+id/action_signupFragment_to_bottomNavigationFragment"
+            app:destination="@id/bottomNavigationFragment" />
+    </fragment>
 
 </navigation>
