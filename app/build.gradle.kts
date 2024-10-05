@@ -71,7 +71,6 @@ dependencies {
     //dataStore preferences
     implementation(libs.data.store)
     implementation(libs.androidx.datastore.core.android)
-    implementation(libs.androidx.ui.desktop)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
