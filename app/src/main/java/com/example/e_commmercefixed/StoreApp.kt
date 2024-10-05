@@ -8,6 +8,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.example.e_commmercefixed.fragments.main.bottomNavigation.BottomNavigationViewModel
 import com.example.e_commmercefixed.fragments.main.login.LoginViewModel
 import com.example.e_commmercefixed.fragments.main.signup.SignupViewModel
+import com.example.e_commmercefixed.fragments.main.welcome.WelcomeViewModel
 import com.example.e_commmercefixed.repositories.authentication.AuthRepository
 import com.example.e_commmercefixed.repositories.authentication.AuthRepositoryImpl
 import io.ktor.client.HttpClient
@@ -44,6 +45,7 @@ class StoreApp : Application() {
             viewModel { LoginViewModel(get()) }
             viewModel { BottomNavigationViewModel(get()) }
             viewModel { SignupViewModel(get()) }
+            viewModel { WelcomeViewModel(get()) }
         }
 
         startKoin{

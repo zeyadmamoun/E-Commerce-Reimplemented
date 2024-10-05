@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.e_commmercefixed.models.authModels.LoginUserCredentials
 import com.example.e_commmercefixed.models.authModels.Response
+import com.example.e_commmercefixed.repositories.authentication.AccountType
 import com.example.e_commmercefixed.repositories.authentication.AuthRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -75,6 +76,7 @@ class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
                 updateUiState(LoginUiState())
                 viewModelScope.launch {
                     repository.saveLoginToken(result.token)
+                    repository.currentUserType = AccountType.AppAccount
                 }
                 navigateToHomeScreen()
             }

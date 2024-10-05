@@ -24,10 +24,15 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 
+enum class AccountType {
+    GoogleAccount, AppAccount
+}
+
 class AuthRepositoryImpl(
     private val client: HttpClient,
     private val dataStore: DataStore<Preferences>
 ) : AuthRepository {
+
 
     override val token: Flow<String?> = dataStore.data
         .catch {
@@ -41,6 +46,8 @@ class AuthRepositoryImpl(
         .map { preferences ->
             preferences[LOGIN_TOKEN]
         }
+
+    override var currentUserType: AccountType? = null
 
     override suspend fun getUserData(token: String): UserResponse {
         val userResponse = try {
@@ -71,21 +78,23 @@ class AuthRepositoryImpl(
     }
 
     override suspend fun signup(user: User): Response {
-        return try{
-            val httpResponse = client.post("http://192.168.1.18:8080/register"){
+        return try {
+            val httpResponse = client.post("http://192.168.1.18:8080/register") {
                 contentType(ContentType.Application.Json)
                 setBody(user)
             }
             val response: Response = httpResponse.body()
             response
-        }catch (e: Exception){
+        } catch (e: Exception) {
             Log.d("AuthRepo", e.message.toString())
             Response(false, e.message.toString())
         }
     }
 
     override suspend fun logout() {
-        TODO("Not yet implemented")
+        dataStore.edit { preferences ->
+            preferences[LOGIN_TOKEN] = ""
+        }
     }
 
     override suspend fun saveLoginToken(token: String) {

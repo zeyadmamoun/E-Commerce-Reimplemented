@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.Flow
 interface AuthRepository {
 
     val token: Flow<String?>
+    var currentUserType: AccountType?
     suspend fun getUserData(token: String): UserResponse
     suspend fun login(userCredentials: LoginUserCredentials): Response
     suspend fun signup(user: User): Response

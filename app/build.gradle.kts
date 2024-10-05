@@ -3,6 +3,9 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("androidx.navigation.safeargs.kotlin")
     kotlin("plugin.serialization") version "2.0.0"
+    // Google services Gradle plugin
+    id("com.google.gms.google-services")
+
 }
 
 android {
@@ -43,6 +46,10 @@ android {
 }
 
 dependencies {
+    // Firebase Bom
+    implementation(platform("com.google.firebase:firebase-bom:33.3.0"))
+    // firebase Ui
+    implementation (libs.firebase.ui.auth)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -55,7 +62,6 @@ dependencies {
     //ktor
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.cio)
-//    implementation(libs.ktor.client.okhttp)
     implementation(libs.ktor.content.negotiation)
     implementation(libs.ktor.serialization.json)
     //serialization
@@ -65,6 +71,7 @@ dependencies {
     //dataStore preferences
     implementation(libs.data.store)
     implementation(libs.androidx.datastore.core.android)
+    implementation(libs.androidx.ui.desktop)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

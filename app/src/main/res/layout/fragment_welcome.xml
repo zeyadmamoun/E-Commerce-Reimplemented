@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.main.WelcomeFragment">
+        tools:context=".fragments.main.welcome.WelcomeFragment">
 
         <ImageView
             android:id="@+id/icon_welcome"

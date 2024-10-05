@@ -19,7 +19,6 @@ class SignupFragment : Fragment() {
 
     private var _binding: FragmentSignupBinding? = null
     private val binding get() = _binding!!
-
     private val viewModel: SignupViewModel by inject()
 
     override fun onCreateView(
