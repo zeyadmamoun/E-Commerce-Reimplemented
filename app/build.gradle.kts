@@ -68,9 +68,11 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     //koin
     implementation(libs.koin.android)
-    //dataStore preferences
+    // dataStore preferences
     implementation(libs.data.store)
     implementation(libs.androidx.datastore.core.android)
+    // splash screen
+    implementation (libs.androidx.core.splashscreen)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

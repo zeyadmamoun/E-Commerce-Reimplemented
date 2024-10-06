@@ -9,11 +9,14 @@ import androidx.fragment.app.Fragment
 import com.example.e_commmercefixed.R
 import com.example.e_commmercefixed.databinding.FragmentHomeBinding
 import com.firebase.ui.auth.AuthUI
+import org.koin.android.ext.android.inject
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: HomeViewModel by inject()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,6 +34,7 @@ class HomeFragment : Fragment() {
                 AuthUI.getInstance().signOut(it)
                     .addOnCompleteListener {}
             }
+            viewModel.logout()
         }
     }
 

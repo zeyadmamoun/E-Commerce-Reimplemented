@@ -9,6 +9,8 @@ import com.example.e_commmercefixed.fragments.main.bottomNavigation.BottomNaviga
 import com.example.e_commmercefixed.fragments.main.login.LoginViewModel
 import com.example.e_commmercefixed.fragments.main.signup.SignupViewModel
 import com.example.e_commmercefixed.fragments.main.welcome.WelcomeViewModel
+import com.example.e_commmercefixed.fragments.splash.SplashViewModel
+import com.example.e_commmercefixed.fragments.sub.home.HomeViewModel
 import com.example.e_commmercefixed.repositories.authentication.AuthRepository
 import com.example.e_commmercefixed.repositories.authentication.AuthRepositoryImpl
 import io.ktor.client.HttpClient
@@ -42,10 +44,12 @@ class StoreApp : Application() {
                 AuthRepositoryImpl(get(),tokenDataStore)
             }
 
+            viewModel { SplashViewModel(get()) }
             viewModel { LoginViewModel(get()) }
             viewModel { BottomNavigationViewModel(get()) }
             viewModel { SignupViewModel(get()) }
             viewModel { WelcomeViewModel(get()) }
+            viewModel { HomeViewModel(get()) }
         }
 
         startKoin{
