@@ -25,6 +25,11 @@ android {
     buildFeatures {
         //noinspection DataBindingWithoutKapt
         dataBinding =  true
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion ="1.5.1"
     }
 
     buildTypes {
@@ -46,11 +51,18 @@ android {
 }
 
 dependencies {
+    // adding compose to the view System
+    implementation(platform("androidx.compose:compose-bom:2024.09.03"))
+    // other dependencies
+    // Compose
+    implementation("androidx.activity:activity-compose:1.9.2")
+    implementation("androidx.compose.material3:material3")
+    implementation("com.google.accompanist:accompanist-themeadapter-material3:0.28.0")
     // Firebase Bom
     implementation(platform("com.google.firebase:firebase-bom:33.3.0"))
     // firebase Ui
     implementation (libs.firebase.ui.auth)
-
+    // basic project dependency
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -73,6 +85,8 @@ dependencies {
     implementation(libs.androidx.datastore.core.android)
     // splash screen
     implementation (libs.androidx.core.splashscreen)
+    //coil for compose
+    implementation(libs.coil.compose)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

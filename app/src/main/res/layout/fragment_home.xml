@@ -7,63 +7,128 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp"
-        tools:context=".fragments.sub.home.HomeFragment">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            tools:context=".fragments.sub.home.HomeFragment">
 
-            <!-- Search Bar Container -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/searchBarContainer"
+            <LinearLayout
+                android:id="@+id/search_bar"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="3"
-                android:gravity="center_vertical"
-                app:hintEnabled="false"
-                app:startIconDrawable="@drawable/ic_search"
-                app:hintTextAppearance="@style/BoldHintTextAppearance">
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toStartOf="@id/guideline2"
+                app:layout_constraintStart_toEndOf="@id/guideline1"
+                app:layout_constraintTop_toBottomOf="@id/guideline3">
 
-                <!-- Search EditText -->
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/searchInput"
-                    android:layout_width="match_parent"
+                <!-- Search Bar Container -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/searchBarContainer"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="3"
+                    android:gravity="center_vertical"
+                    app:hintEnabled="false"
+                    app:hintTextAppearance="@style/BoldHintTextAppearance"
+                    app:startIconDrawable="@drawable/ic_search">
+
+                    <!-- Search EditText -->
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/searchInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/rounded_search_background"
+                        android:hint="@string/search_for_product"
+                        android:inputType="text"
+                        android:paddingTop="0dp"
+                        android:paddingBottom="0dp"
+                        android:textSize="14sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Spacer -->
+                <View
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_weight="0.1" />
+
+                <!-- Profile Button -->
+                <ImageView
+                    android:id="@+id/profile_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.6"
                     android:background="@drawable/rounded_search_background"
-                    android:hint="@string/search_for_product"
-                    android:inputType="text"
-                    android:textSize="14sp"
-                    android:paddingTop="0dp"
-                    android:paddingBottom="0dp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:contentDescription="@string/profile_icon"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_logout" />
 
-            <!-- Spacer -->
-            <View
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/ad_card"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1" />
+                android:layout_height="150dp"
+                app:layout_constraintStart_toEndOf="@id/guideline1"
+                app:layout_constraintEnd_toStartOf="@id/guideline2"
+                app:layout_constraintTop_toBottomOf="@id/search_bar"
+                app:cardBackgroundColor="@color/md_theme_inverseOnSurface_highContrast"
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="24dp">
 
-            <!-- Profile Button -->
-            <ImageView
-                android:id="@+id/profile_btn"
-                android:padding="12dp"
-                android:layout_weight="0.6"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_profile"
-                android:background="@drawable/rounded_search_background"
-                android:contentDescription="@string/profile_icon" />
+                <include layout="@layout/explore_card"/>
 
-        </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/category_text"
+                app:layout_constraintStart_toEndOf="@id/guideline1"
+                app:layout_constraintTop_toBottomOf="@id/ad_card"
+                android:text="@string/categories"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
+
+            </TextView>
+
+            <!-- Add a ComposeView where the Compose content will be displayed -->
+            <androidx.compose.ui.platform.ComposeView
+                android:id="@+id/composeView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:layout_constraintTop_toBottomOf="@id/category_text"
+                app:layout_constraintStart_toEndOf="@id/guideline1"
+                app:layout_constraintEnd_toStartOf="@id/guideline2"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.05" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.95" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="20dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

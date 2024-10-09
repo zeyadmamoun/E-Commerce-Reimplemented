@@ -22,4 +22,8 @@
     <string name="email_sign_up">Sign Up with Email</string>
     <string name="search_for_product">Search Products</string>
     <string name="profile_icon">Profile icon</string>
+    <string name="card_title">Explore Todays Deals</string>
+    <string name="card_subtitle">Discover exclusive discounts and exciting offers</string>
+    <string name="card_start_now">Start Now</string>
+    <string name="categories">Categories</string>
 </resources>

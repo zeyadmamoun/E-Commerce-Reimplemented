@@ -13,10 +13,13 @@ import com.example.e_commmercefixed.fragments.splash.SplashViewModel
 import com.example.e_commmercefixed.fragments.sub.home.HomeViewModel
 import com.example.e_commmercefixed.repositories.authentication.AuthRepository
 import com.example.e_commmercefixed.repositories.authentication.AuthRepositoryImpl
+import com.example.e_commmercefixed.repositories.data.ProductsRepository
+import com.example.e_commmercefixed.repositories.data.ProductsRepositoryImpl
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.serialization.kotlinx.json.json
+import kotlinx.serialization.json.Json
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
@@ -33,15 +36,22 @@ class StoreApp : Application() {
 
         val appModule = module {
             single {
-                HttpClient(CIO){
-                    install(ContentNegotiation){
-                        json()
+                HttpClient(CIO) {
+                    install(ContentNegotiation) {
+                        json(
+                            Json {
+                                ignoreUnknownKeys = true
+                            }
+                        )
                     }
                 }
             }
 
-            single<AuthRepository>{
-                AuthRepositoryImpl(get(),tokenDataStore)
+            single<AuthRepository> {
+                AuthRepositoryImpl(get(), tokenDataStore)
+            }
+            single<ProductsRepository> {
+                ProductsRepositoryImpl(get())
             }
 
             viewModel { SplashViewModel(get()) }
@@ -49,10 +59,10 @@ class StoreApp : Application() {
             viewModel { BottomNavigationViewModel(get()) }
             viewModel { SignupViewModel(get()) }
             viewModel { WelcomeViewModel(get()) }
-            viewModel { HomeViewModel(get()) }
+            viewModel { HomeViewModel(get(), get()) }
         }
 
-        startKoin{
+        startKoin {
             androidContext(this@StoreApp)
             modules(appModule)
         }
