@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -41,6 +42,7 @@ class BottomNavigationFragment : Fragment() {
         val navigationHostFragment =
             this.childFragmentManager.findFragmentById(R.id.nav_host_fragment_second) as NavHostFragment
         navController = navigationHostFragment.navController
+        binding.bottomNav.itemActiveIndicatorColor = ContextCompat.getColorStateList(this.requireContext(),R.color.md_theme_primary)
         binding.bottomNav.setupWithNavController(navController)
     }
 }

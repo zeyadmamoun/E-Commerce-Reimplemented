@@ -8,8 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.e_commmercefixed.R
+import com.example.e_commmercefixed.compose.HomeComponents
 import com.example.e_commmercefixed.databinding.FragmentHomeBinding
-import com.example.e_commmercefixed.ui.CategoriesList
 import com.firebase.ui.auth.AuthUI
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -32,7 +32,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getCategories()
-
+        viewModel.getProducts()
         binding.profileBtn.setOnClickListener{
             this.context?.let {
                 AuthUI.getInstance().signOut(it)
@@ -42,12 +42,11 @@ class HomeFragment : Fragment() {
         }
 
         lifecycleScope.launch {
-            viewModel.categories.collect{
+            viewModel.uiState.collect{
                 binding.composeView.setContent {
-                    CategoriesList(categories = it)
+                    HomeComponents(categories = it.categories, products = it.products)
                 }
             }
         }
     }
-
 }

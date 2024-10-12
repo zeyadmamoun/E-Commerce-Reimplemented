@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="md_theme_primary">#ADC6FF</color>
+    <color name="md_theme_primary">#FFFF6F61</color>
     <color name="md_theme_onPrimary">#102F60</color>
     <color name="md_theme_primaryContainer">#2B4678</color>
     <color name="md_theme_onPrimaryContainer">#D8E2FF</color>
@@ -141,4 +141,10 @@
     <color name="md_theme_surfaceContainer_highContrast">#1E1F25</color>
     <color name="md_theme_surfaceContainerHigh_highContrast">#282A2F</color>
     <color name="md_theme_surfaceContainerHighest_highContrast">#33353A</color>
+    <color name="text_color">#ffffff</color>
+    <color name="product_card_background_color">#FFF5F5DC</color>
+    <color name="product_card_text_color">#FF002F6C</color>
+    <color name="product_card_description_color">#FF777777</color>
+    <color name="product_card_price_color">#FFFF6F61</color>
+    <color name="buttons_color">#FFFF6F61</color>
 </resources>

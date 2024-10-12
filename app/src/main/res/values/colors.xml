@@ -2,7 +2,7 @@
 <resources>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
-    <color name="md_theme_primary">#1661C6</color>
+    <color name="md_theme_primary">#FFFF7043</color>
     <color name="md_theme_onPrimary">#FFFFFF</color>
     <color name="md_theme_primaryContainer">#D8E2FF</color>
     <color name="md_theme_onPrimaryContainer">#001A41</color>
@@ -144,4 +144,10 @@
     <color name="md_theme_surfaceContainerHigh_highContrast">#E8E7EE</color>
     <color name="md_theme_surfaceContainerHighest_highContrast">#E2E2E9</color>
     <color name="ic_launcher_background">#63D0DA</color>
+    <color name="text_color">#000000</color>
+    <color name="product_card_background_color">#FFE6E6FA</color>
+    <color name="product_card_text_color">#FF333333</color>
+    <color name="product_card_description_color">#FF666666</color>
+    <color name="product_card_price_color">#FF7B1FA2</color>
+    <color name="buttons_color">#FFFF7043</color>
 </resources>

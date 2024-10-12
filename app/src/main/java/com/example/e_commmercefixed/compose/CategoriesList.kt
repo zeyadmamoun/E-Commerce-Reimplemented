@@ -1,4 +1,4 @@
-package com.example.e_commmercefixed.ui
+package com.example.e_commmercefixed.compose
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -76,18 +76,6 @@ fun CategoryCard(category: Category) {
                 )
             }
         }
-    }
-}
-
-@Composable
-fun OnError(){
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Gray),
-        contentAlignment = Alignment.Center
-    ) {
-        Text("Error loading image", color = Color.White)
     }
 }
 
